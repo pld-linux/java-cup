@@ -58,4 +58,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README LICENSE CHANGELOG cup_logo.gif manual.html dist/javadoc/*
-%{_javadir}/*.jar
+%{_javalibdir}/*.jar

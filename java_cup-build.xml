@@ -1,0 +1,56 @@
+<project name="java_cup" default="dist" basedir=".">
+	<description>
+		Jpackage build file for java_cup
+	</description>
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="dist" location="dist"/>
+	
+	<target name="init">
+	<tstamp/>
+	<mkdir dir="${src}"/>
+	<mkdir dir="${build}"/>
+	<copy todir="${src}">
+		<fileset dir="java_cup"/>
+	</copy>
+	</target>
+
+	<target name="compile" depends="init" description="Compilation">
+		<javac srcdir="${src}" destdir="${build}"/>
+	</target>
+
+	<target name="dist" depends="compile">
+		<mkdir dir="${dist}/lib"/>
+		<jar jarfile="${dist}/lib/java_cup.jar" 
+		basedir="${build}"
+		excludes="java_cup/simple_calc/**,java_cup/runtime/**"
+		/>
+		<jar jarfile="${dist}/lib/java_cup-runtime.jar" 
+		basedir="${build}"
+		includes="java_cup/runtime/**"
+		/>
+	</target>
+
+	<target name="javadoc" >
+		<mkdir dir="${dist}/javadoc"/>
+		<javadoc 
+		destdir="${dist}/javadoc"
+		author="true"
+		version="true"
+		use="true"
+		windowtitle="java_cup API">
+
+		<fileset dir="src" defaultexcludes="yes">
+		</fileset>
+		</javadoc>
+
+	</target>
+
+	<target name="clean" description="clean up" >
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
+</project>
+
+

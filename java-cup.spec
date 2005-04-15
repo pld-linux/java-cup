@@ -37,7 +37,7 @@ do³±czaj±cej osadzony kod w Javie i tworzy analizatory
 zaimplementowane w Javie.
 
 %prep
-%setup -q -c -n %{name}-%{version}
+%setup -q -c
 cp %{SOURCE1} build.xml
 
 %build

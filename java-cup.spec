@@ -12,7 +12,7 @@ Source0:	http://www.cs.princeton.edu/~appel/modern/java/CUP/%{name}_%{pkgver}.ta
 # Source0-md5:	8b11edfec13c590ea443d0f0ae0da479
 Source1:	%{name}-build.xml
 URL:		http://www.cs.princeton.edu/~appel/modern/java/CUP/
-BuildRequires:	jakarta-ant >= 1.5
+BuildRequires:	ant >= 1.5
 Requires:	jre
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

@@ -76,4 +76,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_javadir}/*.jar
 
 %files javadoc
+%defattr(644,root,root,755)
 %doc %{_javadocdir}/%{name}-%{version}

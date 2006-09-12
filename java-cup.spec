@@ -48,13 +48,13 @@ Java CUP API documentation.
 Dokumentacja API Java CUP.
 
 %prep
-%setup -q -c
-cp %{SOURCE1} build.xml
+%setup -q -n develop
 
 %build
 unset CLASSPATH || :
 export JAVA_HOME="%{java_home}"
-ant dist javadoc
+
+%{ant} dist javadoc
 
 %install
 rm -rf $RPM_BUILD_ROOT

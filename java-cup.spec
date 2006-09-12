@@ -1,4 +1,4 @@
-%define		ver		0.11
+%define		ver		0.11a
 %define		pkgver		0.11a-20060912
 
 Summary:	Java-based Constructor of Useful Parsers
@@ -54,26 +54,27 @@ Dokumentacja API Java CUP.
 unset CLASSPATH || :
 export JAVA_HOME="%{java_home}"
 
-%{ant} dist javadoc
+%{ant} dist
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_javadir},%{_javadocdir}/%{name}-%{version}}
-cp dist/lib/%{name}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
-cp dist/lib/%{name}-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-runtime-%{version}.jar
+
+cp dist/java-cup-11a.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
+cp dist/java-cup-11a-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-runtime-%{version}.jar
 ln -sf %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}.jar
 ln -sf %{name}-runtime-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-runtime.jar
 
-cp -R dist/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
+#cp -R dist/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README LICENSE CHANGELOG cup_logo.gif manual.html 
+%doc changelog.txt manual.html 
 %{_javadir}/*.jar
 
-%files javadoc
-%defattr(644,root,root,755)
-%doc %{_javadocdir}/%{name}-%{version}
+#%files javadoc
+#%defattr(644,root,root,755)
+#%doc %{_javadocdir}/%{name}-%{version}

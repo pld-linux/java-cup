@@ -1,5 +1,5 @@
-%define		ver		0.10k
-%define		pkgver		v10k
+%define		ver		0.11
+%define		pkgver		0.11a-20060912
 
 Summary:	Java-based Constructor of Useful Parsers
 Summary(pl):	Javowy konstruktor przydatnych analizatorów
@@ -8,10 +8,9 @@ Version:	%{ver}
 Release:	1
 License:	BSD-like
 Group:		Development/Languages/Java
-Source0:	http://www.cs.princeton.edu/~appel/modern/java/CUP/%{name}_%{pkgver}.tar.gz
-# Source0-md5:	8b11edfec13c590ea443d0f0ae0da479
-Source1:	%{name}-build.xml
-URL:		http://www.cs.princeton.edu/~appel/modern/java/CUP/
+Source0:	%{name}-%{pkgver}.tar.gz
+# Source0-md5:	c9b26e0e6c1c02f2b37148c54b28cd8d
+URL:		http://www2.cs.tum.edu/projects/cup/
 BuildRequires:	ant >= 1.5
 BuildRequires:	jpackage-utils
 BuildRequires:	rpmbuild(macros) >= 1.300

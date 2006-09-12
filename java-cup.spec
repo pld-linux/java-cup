@@ -54,7 +54,7 @@ Dokumentacja API Java CUP.
 unset CLASSPATH || :
 export JAVA_HOME="%{java_home}"
 
-%{ant} dist
+%ant dist
 
 %install
 rm -rf $RPM_BUILD_ROOT

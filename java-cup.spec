@@ -2,7 +2,7 @@
 %define		pkgver		0.11a-20060912
 
 Summary:	Java-based Constructor of Useful Parsers
-Summary(pl):	Javowy konstruktor przydatnych analizatorÛw
+Summary(pl.UTF-8):   Javowy konstruktor przydatnych analizator√≥w
 Name:		java_cup
 Version:	%{ver}
 Release:	1
@@ -29,24 +29,24 @@ YACC and in fact offers most of the features of YACC. However, CUP is
 written in Java, uses specifications including embedded Java code, and
 produces parsers which are implemented in Java.
 
-%description -l pl
-Java CUP to oparty na Javie(TM) konstruktor uøytecznych analizatorÛw
-(Constructor of Useful Parsers - w skrÛcie CUP). CUP to system s≥uø±cy
-do generowania analizatorÛw LALR z prostych wyraøeÒ. S≥uøy do tego
-samego celu co szeroko uøywany YACC i w wiÍkszo∂ci ma te same
-moøliwo∂ci. Jednak CUP jest napisany w Javie, uøywa specyfikacji
-do≥±czaj±cej osadzony kod w Javie i tworzy analizatory
+%description -l pl.UTF-8
+Java CUP to oparty na Javie(TM) konstruktor u≈ºytecznych analizator√≥w
+(Constructor of Useful Parsers - w skr√≥cie CUP). CUP to system s≈Çu≈ºƒÖcy
+do generowania analizator√≥w LALR z prostych wyra≈ºe≈Ñ. S≈Çu≈ºy do tego
+samego celu co szeroko u≈ºywany YACC i w wiƒôkszo≈õci ma te same
+mo≈ºliwo≈õci. Jednak CUP jest napisany w Javie, u≈ºywa specyfikacji
+do≈ÇƒÖczajƒÖcej osadzony kod w Javie i tworzy analizatory
 zaimplementowane w Javie.
 
 %package javadoc
 Summary:	Java CUP API documentation
-Summary(pl):	Dokumentacja API Java CUP
+Summary(pl.UTF-8):   Dokumentacja API Java CUP
 Group:		Documentation
 
 %description javadoc
 Java CUP API documentation.
 
-%description javadoc -l pl
+%description javadoc -l pl.UTF-8
 Dokumentacja API Java CUP.
 
 %prep

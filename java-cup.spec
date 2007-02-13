@@ -2,7 +2,7 @@
 %define		pkgver		0.11a-20060912
 
 Summary:	Java-based Constructor of Useful Parsers
-Summary(pl.UTF-8):   Javowy konstruktor przydatnych analizatorów
+Summary(pl.UTF-8):	Javowy konstruktor przydatnych analizatorów
 Name:		java_cup
 Version:	%{ver}
 Release:	1
@@ -40,7 +40,7 @@ zaimplementowane w Javie.
 
 %package javadoc
 Summary:	Java CUP API documentation
-Summary(pl.UTF-8):   Dokumentacja API Java CUP
+Summary(pl.UTF-8):	Dokumentacja API Java CUP
 Group:		Documentation
 
 %description javadoc

@@ -1,6 +1,11 @@
+#
+# Conditional build:
+%bcond_without	javadoc		# don't build javadoc
+#
+%include	/usr/lib/rpm/macros.java
+#
 %define		ver		0.11a
 %define		pkgver		0.11a-20060912
-
 Summary:	Java-based Constructor of Useful Parsers
 Summary(pl.UTF-8):	Javowy konstruktor przydatnych analizatorów
 Name:		java_cup
@@ -12,13 +17,11 @@ Source0:	%{name}-%{pkgver}.tar.gz
 # Source0-md5:	c9b26e0e6c1c02f2b37148c54b28cd8d
 URL:		http://www2.cs.tum.edu/projects/cup/
 BuildRequires:	ant >= 1.5
+BuildRequires:	java-gcj-compat-devel
 BuildRequires:	jpackage-utils
+BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
-Requires:	jre
-# javadocs disappeared
-Obsoletes:	java_cup-javadoc
 BuildArch:	noarch
-ExclusiveArch:	i586 i686 pentium3 pentium4 athlon %{x8664} noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -56,7 +59,12 @@ Dokumentacja API Java CUP.
 unset CLASSPATH || :
 export JAVA_HOME="%{java_home}"
 
-%ant dist
+%ant -Dbuild.compiler=extJavac dist
+
+%if %{with javadoc}
+export SHELL=/bin/sh
+%javadoc -d dist/javadoc src/java_cup/*.java
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -67,7 +75,12 @@ cp dist/java-cup-11a-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-runtime-%{ve
 ln -sf %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}.jar
 ln -sf %{name}-runtime-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-runtime.jar
 
-#cp -R dist/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
+# javadoc
+%if %{with javadoc}
+install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a dist/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
+%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -77,6 +90,10 @@ rm -rf $RPM_BUILD_ROOT
 %doc changelog.txt manual.html 
 %{_javadir}/*.jar
 
-#%files javadoc
-#%defattr(644,root,root,755)
-#%doc %{_javadocdir}/%{name}-%{version}
+# javadoc
+%if %{with javadoc}
+%files javadoc
+%defattr(644,root,root,755)
+%{_javadocdir}/%{srcname}-%{version}
+%ghost %{_javadocdir}/%{srcname}
+%endif

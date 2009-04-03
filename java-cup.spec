@@ -2,23 +2,32 @@
 # Conditional build:
 %bcond_without	javadoc		# don't build javadoc
 #
+%if "%{pld_release}" == "ti"
+%bcond_without	java_sun	# build with gcj
+%else
+%bcond_with	java_sun	# build with java-sun
+%endif
+#
 %include	/usr/lib/rpm/macros.java
 #
 %define		ver		0.11a
 %define		pkgver		0.11a-20060912
+%define		srcname		cup
 Summary:	Java-based Constructor of Useful Parsers
 Summary(pl.UTF-8):	Javowy konstruktor przydatnych analizatorów
-Name:		java_cup
+Name:		java-cup
 Version:	%{ver}
 Release:	2
 License:	BSD-like
 Group:		Development/Languages/Java
-Source0:	%{name}-%{pkgver}.tar.gz
+Source0:	java_cup-%{pkgver}.tar.gz
 # Source0-md5:	c9b26e0e6c1c02f2b37148c54b28cd8d
 URL:		http://www2.cs.tum.edu/projects/cup/
 BuildRequires:	ant >= 1.5
-BuildRequires:	java-gcj-compat-devel
+%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
+%{?with_java_sun:BuildRequires:	java-sun <= 1.5}
 BuildRequires:	jpackage-utils
+BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Provides:	javacup
@@ -61,10 +70,9 @@ Dokumentacja API Java CUP.
 unset CLASSPATH || :
 export JAVA_HOME="%{java_home}"
 
-%ant -Dbuild.compiler=extJavac dist
+%ant dist
 
 %if %{with javadoc}
-export SHELL=/bin/sh
 %javadoc -d dist/javadoc src/java_cup/*.java
 %endif
 
@@ -72,10 +80,10 @@ export SHELL=/bin/sh
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_javadir},%{_javadocdir}/%{name}-%{version}}
 
-cp dist/java-cup-11a.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-%{version}.jar
-cp dist/java-cup-11a-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-runtime-%{version}.jar
-ln -sf %{name}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}.jar
-ln -sf %{name}-runtime-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}-runtime.jar
+cp dist/java-cup-11a.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
+cp dist/java-cup-11a-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime-%{version}.jar
+ln -sf %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
+ln -sf %{srcname}-runtime-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime.jar
 
 # javadoc
 %if %{with javadoc}

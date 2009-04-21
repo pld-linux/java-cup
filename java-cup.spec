@@ -64,7 +64,8 @@ Java CUP API documentation.
 Dokumentacja API Java CUP.
 
 %prep
-%setup -q -n develop
+%setup -qc
+mv develop/* .
 
 %build
 unset CLASSPATH || :
@@ -80,8 +81,8 @@ export JAVA_HOME="%{java_home}"
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_javadir},%{_javadocdir}/%{name}-%{version}}
 
-cp dist/java-cup-11a.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
-cp dist/java-cup-11a-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime-%{version}.jar
+cp dist/java-cup-%{ver}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
+cp dist/java-cup-%{ver}-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime-%{version}.jar
 ln -sf %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
 ln -sf %{srcname}-runtime-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime.jar
 

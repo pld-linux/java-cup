@@ -1,0 +1,6 @@
+- javadoc was removed from build.xml, so generate it manually...
+- ...and unify javadoc %instal and %files
+- drop O: -javadoc
+- use java-gcj-compat-devel
+- drop EA
+- aotoreq: %include macros.java, BR: java-prov, drop R: jre

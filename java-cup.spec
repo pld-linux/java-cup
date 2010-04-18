@@ -77,8 +77,8 @@ install -d $RPM_BUILD_ROOT{%{_javadir},%{_javadocdir}/%{name}-%{version}}
 
 cp dist/java-cup-%{_ver}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
 cp dist/java-cup-%{_ver}-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime-%{version}.jar
-ln -sf %{srcname}-%{_ver}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
-ln -sf %{srcname}-runtime-%{_ver}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime.jar
+ln -sf %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
+ln -sf %{srcname}-runtime-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime.jar
 
 # javadoc
 %if %{with javadoc}

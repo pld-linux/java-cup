@@ -2,30 +2,24 @@
 # Conditional build:
 %bcond_without	javadoc		# don't build javadoc
 #
-%if "%{pld_release}" == "ti"
-%bcond_without	java_sun	# build with gcj
-%else
-%bcond_with	java_sun	# build with java-sun
-%endif
-#
 %include	/usr/lib/rpm/macros.java
 #
-%define		ver		0.11a
+%define		_ver		11a
+%define		ver		0.%{_ver}
 %define		pkgver		%{ver}-20060912
 %define		srcname		cup
 Summary:	Java-based Constructor of Useful Parsers
 Summary(pl.UTF-8):	Javowy konstruktor przydatnych analizatorów
 Name:		java-cup
 Version:	%{ver}
-Release:	2
+Release:	3
 License:	BSD-like
 Group:		Development/Languages/Java
 Source0:	java_cup-%{pkgver}.tar.gz
 # Source0-md5:	c9b26e0e6c1c02f2b37148c54b28cd8d
 URL:		http://www2.cs.tum.edu/projects/cup/
 BuildRequires:	ant >= 1.5
-%{!?with_java_sun:BuildRequires:	java-gcj-compat-devel}
-%{?with_java_sun:BuildRequires:	java-sun <= 1.5}
+BuildRequires:	jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
@@ -81,10 +75,10 @@ export JAVA_HOME="%{java_home}"
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_javadir},%{_javadocdir}/%{name}-%{version}}
 
-cp dist/java-cup-%{ver}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
-cp dist/java-cup-%{ver}-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime-%{version}.jar
-ln -sf %{srcname}-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
-ln -sf %{srcname}-runtime-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime.jar
+cp dist/java-cup-%{_ver}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-%{version}.jar
+cp dist/java-cup-%{_ver}-runtime.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime-%{version}.jar
+ln -sf %{srcname}-%{_ver}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}.jar
+ln -sf %{srcname}-runtime-%{_ver}.jar $RPM_BUILD_ROOT%{_javadir}/%{srcname}-runtime.jar
 
 # javadoc
 %if %{with javadoc}

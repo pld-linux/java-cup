@@ -26,6 +26,7 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Provides:	javacup
 Obsoletes:	javacup
+Obsoletes:	java_cup
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,6 +51,7 @@ zaimplementowane w Javie.
 Summary:	Java CUP API documentation
 Summary(pl.UTF-8):	Dokumentacja API Java CUP
 Group:		Documentation
+Obsoletes:	java_cup-javadoc
 
 %description javadoc
 Java CUP API documentation.
@@ -93,7 +95,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc changelog.txt manual.html
-%{_javadir}/*.jar
+%{_javadir}/cup-%{version}.jar
+%{_javadir}/cup.jar
+%{_javadir}/cup-runtime-%{version}.jar
+%{_javadir}/cup-runtime.jar
 
 # javadoc
 %if %{with javadoc}

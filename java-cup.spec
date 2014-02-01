@@ -2,17 +2,16 @@
 # Conditional build:
 %bcond_without	javadoc		# don't build javadoc
 #
-%include	/usr/lib/rpm/macros.java
-#
 %define		_ver		11a
 %define		ver		0.%{_ver}
 %define		pkgver		%{ver}-20060912
 %define		srcname		cup
+%include	/usr/lib/rpm/macros.java
 Summary:	Java-based Constructor of Useful Parsers
 Summary(pl.UTF-8):	Javowy konstruktor przydatnych analizatorów
 Name:		java-cup
 Version:	%{ver}
-Release:	3
+Release:	4
 License:	BSD-like
 Group:		Development/Languages/Java
 Source0:	java_cup-%{pkgver}.tar.gz
@@ -24,7 +23,6 @@ BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
-Provides:	javacup
 Obsoletes:	javacup
 Obsoletes:	java_cup
 BuildArch:	noarch

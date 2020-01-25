@@ -6,7 +6,6 @@
 %define		ver		0.%{_ver}
 %define		pkgver		%{ver}-20060912
 %define		srcname		cup
-%include	/usr/lib/rpm/macros.java
 Summary:	Java-based Constructor of Useful Parsers
 Summary(pl.UTF-8):	Javowy konstruktor przydatnych analizatorów
 Name:		java-cup

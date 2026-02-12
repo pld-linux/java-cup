@@ -10,7 +10,7 @@ Summary:	Java-based Constructor of Useful Parsers
 Summary(pl.UTF-8):	Javowy konstruktor przydatnych analizatorów
 Name:		java-cup
 Version:	%{ver}
-Release:	4
+Release:	5
 License:	BSD-like
 Group:		Development/Languages/Java
 Source0:	java_cup-%{pkgver}.tar.gz

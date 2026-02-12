@@ -1,0 +1,12 @@
+diff -ur develop.org/build.xml develop/build.xml
+--- develop.org/build.xml	2006-03-28 13:34:53.000000000 +0200
++++ develop/build.xml	2026-02-12 09:56:06.770240630 +0100
+@@ -53,7 +53,7 @@
+ 
+   <target name="compile" depends="jflex">
+     <copy todir="${java}"><fileset dir="${src}"></fileset></copy>
+-    <javac srcdir="${java}" destdir="${classes}" verbose="off" listfiles="off" debug="on" source="1.2" target="1.2">
++    <javac srcdir="${java}" destdir="${classes}" verbose="off" listfiles="off" debug="on" source="1.6" target="1.6">
+       <classpath refid="libraries"/>
+     </javac>
+   </target>

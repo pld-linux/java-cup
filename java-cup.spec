@@ -10,11 +10,12 @@ Summary:	Java-based Constructor of Useful Parsers
 Summary(pl.UTF-8):	Javowy konstruktor przydatnych analizatorów
 Name:		java-cup
 Version:	%{ver}
-Release:	5
+Release:	6
 License:	BSD-like
 Group:		Development/Languages/Java
 Source0:	java_cup-%{pkgver}.tar.gz
 # Source0-md5:	c9b26e0e6c1c02f2b37148c54b28cd8d
+Patch0:		build.patch
 URL:		http://www2.cs.tum.edu/projects/cup/
 BuildRequires:	ant >= 1.5
 BuildRequires:	jdk
@@ -59,6 +60,7 @@ Dokumentacja API Java CUP.
 %prep
 %setup -qc
 mv develop/* .
+%patch -P0 -p1
 
 %build
 unset CLASSPATH || :
